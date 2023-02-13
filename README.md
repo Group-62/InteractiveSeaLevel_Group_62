@@ -4,4 +4,4 @@ Interactive web-based visualisation of sea level and its effect on coastlines th
 
 ## Kanban board
 
-https://zube.io/sem-coursework-4/interactive-sea-level-web-group-62/w/workspace-1/kanban
+https://zube.io/group-project-4/interactive-sea-level-group-62/w/must/kanban
