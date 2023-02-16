@@ -1,0 +1,8 @@
+Server credentials:
+
+	USERNAME: 40494773
+	SERVER: soc-app-liv-14.napier.ac.uk
+
+Access the server with ssh like follows:
+	
+	ssh 40494773@soc-app-liv-14.napier.ac.uk
