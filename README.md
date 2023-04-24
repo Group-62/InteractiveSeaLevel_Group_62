@@ -11,7 +11,6 @@ You can interact with the graph by hovering over data points to see more informa
 ## Additional Features
 In addition to visualizing sea level changes, this web application also includes the following features:
 
-Interactive Controls: Use the arrow keys or the on-screen controls to move around the world and zoom in on specific places.
 Multiple Sea Level Databases: The application uses multiple sea level databases to provide more accurate and comprehensive visualizations.
 Data Sources: The ETOPO database provides the topography data, while the sea level databases provide the sea level rise data.
 Adjustable Sea Level Rise: The application allows users to adjust the sea level rise value to see how it affects sea levels at different locations.
@@ -23,3 +22,17 @@ https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registe
 ## Kanban board
 
 https://zube.io/group-project-4/interactive-sea-level-group-62/w/must/kanban
+
+## Coding
+
+The Sea Level Rise visualisation web page runs on the server using the Flask implementation. Flask is a framework written in Python, which can create web pages with a small number of code lines due to its minimalist style. Flask allows us to run Python inside the HTML and CSS files. These files and the main.py file's interconnection is the one that forms this web page. Main.py is the main file which contains all flask functionalities. Html contains the code which forms the web age, and CSS is in charge of the style and design.  
+
+The files in charge of running the visualization and all functionalities are written in Python. All this coding is divided into two main parts. 
+
+The first one is in charge of accessing the data saved on the ETOPO 1 database, which is the one that contains all the coordinates and topography data. These values are stored in three different arrays in a 2D format. The values from the arrays are then converted into 3D to create the globe. Then a cartographic representation technique is used to distinguish different altitudes and sea levels. Due to the limited amount of RAM lower resolution of the globe will skip coordinates data. 
+
+The second one keeps all the functionalities working. Different functionalities are available in this visualization. For example, the programme allows the user to move around the globe and test out different sea levels. These sea levels are obtained by storing data from different sources in different arrays, and by combining all of them we can get the sea level rise values from 1850 till nowadays. Moreover, using mathematical precautions, we can predict the sea level rise values and add them to the array created before.
+
+To sum up, the code is divided into three parts. The first one is the files in charge of creating the web page and running the programme. The second one is the one in charge of creating the visualization. And the last one implements all the functionalities of the visualisation created.
+
+
