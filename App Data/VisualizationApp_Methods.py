@@ -15,6 +15,13 @@ from scipy.optimize import curve_fit
 #Set path holding necesary files
 PATH = "/Users/metaslowly/Desktop/SeaLevelVisualization/"
 
+#Create folder for html figures
+folder_name = "templates"
+
+if not os.path.exists(folder_name):
+    os.makedirs(folder_name)
+
+
 #Read sea level data
 More_Data = PATH+"csiro_recons_gmsl_yr_2015_csv.csv"
 moreDta=[]
@@ -56,16 +63,6 @@ for i in SeaLevels:
     break
 for i in lst:
   i[1]= round(i[1]-difference, 3)
-
-#Visualize data
-data = {
-    'year': (i[0] for i in SeaLevels),
-    'level': (i[1] for i in SeaLevels)
-    }
-df = pd.DataFrame(data)
-fig = px.line(df, x=df['year'], y=df['level'])
-fig.show()
-
 
 dataFile = PATH+"ETOPO1_Ice_g_gdal.grd"
 firstRead=True
@@ -140,10 +137,12 @@ def secondEtopo(lon_area, lat_area, resolution, spacing, lon, lat, topo):
 
   return lon, lat, topo
    
+#Method to change degrees into radians
 def degree2radians(degree):
   # convert degrees to radians
   return degree*np.pi/180
   
+#To change data from 2d map to 3d coordinates
 def mapping_map_to_sphere (lon, lat, radius=1):
   # this function maps the points of coords (lon, lat) to points onto the sphere of radius radius
   lon=np.array(lon, dtype=np.float64)
@@ -396,6 +395,16 @@ def updateCenter(place):
     else:
         updateView(fig)
 
+def showSeaLevelGraph():
+   #Visualize data
+    data = {
+        'year': (i[0] for i in SeaLevels),
+        'level': (i[1] for i in SeaLevels)
+        }
+    df = pd.DataFrame(data)
+    fig = px.line(df, x=df['year'], y=df['level'])
+    fig.show()
+
 #methods to run 
 def rotHorizontal(p):
     global phi, x, y, z, theta, lat, lon, r
@@ -437,8 +446,8 @@ def superUpdate(updateSection, lat, lon):
 def updateView(fig):
     global year
     fig.update_layout(scene_camera_eye=dict(x=x, y=y, z=z), title='Sea Visualization ({})'.format(year), titlefont = dict(family='Courier New', color=titlecolor))
-    fig.write_html(PATH+"figure.html")
-    webbrowser.open('file://' + os.path.realpath(PATH+"figure.html"))
+    fig.write_html(PATH+"/templates/figure.html")
+    webbrowser.open('file://' + os.path.realpath(PATH+"/templates/figure.html"))
 
 #get lat and lon using global theta and phi
 def getLatLon():
