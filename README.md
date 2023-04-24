@@ -16,6 +16,10 @@ Multiple Sea Level Databases: The application uses multiple sea level databases 
 Data Sources: The ETOPO database provides the topography data, while the sea level databases provide the sea level rise data.
 Adjustable Sea Level Rise: The application allows users to adjust the sea level rise value to see how it affects sea levels at different locations.
 
+## Etopo Data
+
+https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/netcdf/
+
 ## Kanban board
 
 https://zube.io/group-project-4/interactive-sea-level-group-62/w/must/kanban
