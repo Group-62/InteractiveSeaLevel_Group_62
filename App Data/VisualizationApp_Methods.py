@@ -237,7 +237,7 @@ x=1
 y=0
 z=0
 zoomCount = 0
-zoomArray = [1, 0.8, 0.68, 0.58, 0.5, 0.4]
+zoomArray = [1, 0.75, 0.6, 0.5, 0.4]
 x=1
 y=0
 z=0
@@ -299,6 +299,38 @@ def startVisualization():
     updateView(fig)
     return
 
+#method to be called from web to start visualization
+def startVisualizationFull(zoom, yearLevel, place):
+    #i is int between 0 and 4
+    global phi, x, y, z, theta, lat, lon, r, res, size, zoomCount, fig, year, i
+    zoomCount = zoom
+    #Change zoom count and get radius for visualization
+    r = zoomArray[zoomCount]
+    x, y, z = getPlaceXYZ(place)
+    theta = np.arctan2(np.sqrt(x**2 + y**2), z)
+    phi = np.arctan2(y, x)
+    x, y, z = getCoordinates(r, phi, theta)
+    lat, lon = getLatLon()
+    year = yearLevel
+    if y<2201 and y>1849:
+       #if y in range get sea level from corresponding possition
+       l=SeaLevels[y-1850][1]
+       i=l
+
+    if zoomCount == 4:
+        #change res and size of data in figure
+        res = 0.18
+        size = 2
+        #update visualization
+        superUpdate(True, lat, lon)
+    elif zoomCount == 3:
+        #change res and size of data in figure
+        res = 0.6
+        size = 5
+        #update visualization
+        superUpdate(True,  lat, lon)
+    superUpdate(True, lat, lon)
+
 #Horizontal methods to be called from web
 def rotRight():
     rotHorizontal(1)
@@ -316,20 +348,20 @@ def zoomIn():
     #define global variables
     global phi, x, y, z, theta, lat, lon, r, res, size, zoomCount
     
-    if zoomCount < 5:
+    if zoomCount < 4:
         #Change zoom count and get radius for visualization
         zoomCount = zoomCount + 1
         r = zoomArray[zoomCount]
         x, y, z = getCoordinates(r, phi, theta)
 
-        if zoomCount == 5:
+        if zoomCount == 4:
             #change res and size of data in figure
             res = 0.18
             size = 2
             lat, lon = getLatLon()
             #update visualization
             superUpdate(True, lat, lon)
-        elif zoomCount == 4:
+        elif zoomCount == 3:
             #change res and size of data in figure
             res = 0.6
             size = 5
@@ -348,14 +380,14 @@ def zoomOut():
         r = zoomArray[zoomCount]
         x, y, z = getCoordinates(r, phi, theta)
     
-        if zoomCount == 4:
+        if zoomCount == 3:
             #change res and size of data in figure
             res = 0.6
             size = 5
             lat, lon = getLatLon()
             #update visualization
             superUpdate(True, lat, lon)
-        elif zoomCount == 3:
+        elif zoomCount == 2:
             #change res and size of data in figure
             res = 0.8
             size = 90
@@ -388,7 +420,7 @@ def updateSeaLevelYear(y):
 def updateCenter(place):
     global x, y, z, fig, lat, lon
     x, y, z = getPlaceXYZ(place)
-    if zoomCount > 3:
+    if zoomCount > 2:
         lat, lon = getLatLon()
         x, y, z = getCoordinates(zoomArray[zoomCount], phi, theta)
         superUpdate(True, lat, lon)
@@ -411,7 +443,7 @@ def rotHorizontal(p):
     n=30*(r**3.5)
     phi = rotPhi(phi, n*p)
     x, y, z = getCoordinates(r, phi, theta)
-    if(zoomCount>3):
+    if(zoomCount>2):
         lat, lon = getLatLon()
         superUpdate(True, lat, lon)
     else:
@@ -422,7 +454,7 @@ def rotVertical(p):
     theta = rotTheta(theta, n*p)
     x, y, z = getCoordinates(r, phi, theta)
 
-    if(zoomCount>3):
+    if(zoomCount>2):
         lat, lon = getLatLon()
         superUpdate(True, lat, lon)
     else:
@@ -459,26 +491,3 @@ def getLatLon():
     lon = math.degrees(lon)
     return lat, lon
 
-#Demo test calling methods
-startVisualization()
-sleep(3)
-zoomIn()
-sleep(3)
-zoomIn()
-sleep(3)
-zoomIn()
-sleep(3)
-zoomIn()
-sleep(3)
-updateCenter("puerto rico")
-sleep(3)
-rotLeft()
-sleep(3)
-zoomIn()
-sleep(3)
-updateSeaLevelYear(1850)
-sleep(3)
-updateSeaLevelYear(2000)
-sleep(3)
-updateSeaLevelYear(2200)
-sleep(3)
