@@ -35,7 +35,7 @@ The second one keeps all the functionalities working. Different functionalities 
 
 To sum up, the code is divided into three parts. The first one is the files in charge of creating the web page and running the programme. The second one is the one in charge of creating the visualization. And the last one implements all the functionalities of the visualisation created.
 
-##Usage og the server
+## Usage of the server
 
 In order to use the server, copy the server folder into the server host machine. Create a virtual enviroment and use the following code
 
