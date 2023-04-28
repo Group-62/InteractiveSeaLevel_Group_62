@@ -37,14 +37,44 @@ To sum up, the code is divided into three parts. The first one is the files in c
 
 ## Usage of the server
 
-In order to use the server, copy the server folder into the server host machine. Create a virtual enviroment and use the following code
+### Setting it up
+
+In order to use the server, copy the server folder into the server host machine. 
+Now create a virtual enviroment using the following code:
+
+```
+python -m venv <PATH>
+```
+After this, source the virtual enviroment:
 
 ```
 source venv/bin/activate
+```
+
+### Editing the server
+
+Now, you are in the virtual enviroment and can edit anything within the server. For examle if you would like to change the index.html file:
+
+```
+vim templates/index.html
+```
+
+All the flask implementation can be found on the `main.py` file and the visualisation file is `world.py`. The same applies for this two files:
+
+```
+vim main.py
+vim world.py
+```
+
+### Running the server
+
+Once all the editing is being done, you can run the server executing this simple command:
+
+```
 python main.py
 ```
 
-This will use all the code in world.py in order to create the visualizations. Please do have a look at the world.py.
+This will use all the code in world.py in order to create the visualizations. Please do have a look at the `world.py`.
 
 ## Limitations 
 
