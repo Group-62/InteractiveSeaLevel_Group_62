@@ -68,7 +68,7 @@ vim world.py
 
 ### Running the server
 
-Once all the editing is being done, you can run the server executing this simple command:
+Important to highlight that the following command craetes a deployment server. In order to make it available online the use of `nginx` is recommended. Once all the editing is being done, you can run the server executing this simple command:
 
 ```
 python main.py
