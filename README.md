@@ -48,13 +48,31 @@ This will use all the code in world.py in order to create the visualizations. Pl
 
 ## Limitations 
 
-1 - Resolution of the data: The resolution of the 3D visualitation is limited. Even at it's maximun resolution, etopo data set makes it dificult to differentiate where then coastline starts. 
+· Resolution of the data: The resolution of the 3D visualitation is limited. Even at it's maximun resolution, etopo data set makes it dificult to differentiate where then coastline starts. 
 
-2 - Performance: The webside go slowlier than expected.
+· Performance: The webside go slowlier than expected.
 
-3 - Database: Etopo and sea level database are use. Extra database could be add to develop futher fitures.
+· Database: Etopo and sea level database are use. Extra database could be add to develop futher fitures.
 
-4 - Webside: We had develop the code for interacting with the 3D visualitation, creating the fetures to make that possible on the website has been a limitation. Futhermore, each time that the user ask for a place or date, the 3D visualitation is open into another window, being a limitation.
+· Webside: We had develop the code for interacting with the 3D visualitation, creating the fetures to make that possible on the website has been a limitation. Futhermore, each time that the user ask for a place or date, the 3D visualitation is open into another window, being a limitation.
 
-5 - Animation of the historic values: The fact that an animation during years can be done is a limitation. A timelaps tool could be create.
+· Animation of the historic values: The fact that an animation during years can be done is a limitation. A timelaps tool could be create.
+
+
+
+## Further Development
+
+· Coastline indicator: a bright colour line through an estimation of where the coastline would be according to the data. Maybe some shading in the sea to make it clear which the coast side it was
+
+· Moving and zoom methods integration. The code already includes some methods to rotate and zoom the globe. When zoom level number 4 and 5 is reached resolution of the globe increases and only a small section of it will be rendered, as rendering the whole globe at higher resolutions will take too long. Methods for rotation and zoom should be integrated on the website for the user to freely navigate through the globe
+
+· Visualization should show in the same window with all the controls. Currently the visualization will pop up in another window, this isn’t ideal at the point of recognising the sea level rise. Having the visualization update itself next to all the controls would offer a higher user experience
+
+· Ability to live update year, location, and custom sea level should be implemented. All methods exist already in the code. Parameters should be sent using flask
+
+· Possibility to create an animation that shows the level rise between two specific dates by rendering in between visualizations and exporting them in something like a gif format
+
+· Further research and data collection should be done on sea level data. Wider range of data should be explored, and polynomial fitting should be recalculated. Possibility of implementing two other coastline lines representing the uncertainty of the datasets
+
+· Ability to insert databases with higher resolutions but specific to countries and continents, rendering them on top of the globe and adapting them to be compatible with the sea level visualization. Data only for UK would be fine for an initial prototype but ideally the program should allow for other datasets to easily be added
 
