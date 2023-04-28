@@ -46,4 +46,11 @@ python main.py
 
 This will use all the code in world.py in order to create the visualizations. Please do have a look at the world.py.
 
+## Limitations 
+
+1 - Resolution of the data: The resolution of the 3D visualitation is limited. Even at it's maximun resolution, etopo data set makes it dificult to differentiate where then coastline starts. 
+2 - Performance: The webside go slowlier than expected.  
+3 - Database: Etopo and sea level database are use. Extra database could be add to develop futher fitures.
+4 - Webside: We had develop the code for interacting with the 3D visualitation, creating the fetures to make that possible on the website has been a limitation. Futhermore, each time that the user ask for a place or date, the 3D visualitation is open into another window, being a limitation. 
+5 - Animation of the historic values: The fact that an animation during years can be done is a limitation. A timelaps tool could be create.
 
